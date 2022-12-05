@@ -1,4 +1,4 @@
-class LinkedList {
+export class LinkedList {
   constructor() {
     this.head = null; // first one
     this.tail = null; // last one
@@ -71,9 +71,26 @@ class LinkedList {
     }
   }
 
+  deleteHead() {
+    if (!this.head) {
+      return;
+    }
+
+    const deleteItem = this.head;
+
+    if (this.head.next) {
+      this.head = this.head.next;
+    } else {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return this.head;
+  }
+
   print() {
     let el = this.head;
-    console.log("whole objerct is", this.head);
+    console.log("whole objerct is", el);
   }
 
   find(value) {
@@ -91,6 +108,8 @@ class LinkedList {
   }
 }
 
+// test
+
 const linkedList = new LinkedList();
 
 linkedList.append("22");
@@ -101,12 +120,10 @@ linkedList.append(true);
 linkedList.prepend("11");
 linkedList.prepend("11");
 
-// linkedList.delete("11");
 linkedList.delete(true);
-console.log(linkedList.find("11"));
+
+// console.log(linkedList.find("11"));
 
 linkedList.insertAfter("new value", "33");
 
 linkedList.print();
-
-// console.log(linkedList.toArray());
